@@ -29,10 +29,17 @@
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
             </section>
+            <section>
+                <form class="" onsubmit="return Client.getMeaning(event)">
+                    <!-- onblur="Client.onBlur()"-->
+                    <input id="meaning-cloud" type="text" name="input" value="" placeholder="Article">
+                    <input type="submit" name="" value="submit" onclick="return Client.getMeaning(event)" onsubmit="return Client.getMeaning(event)">
+                </form>
+            </section>
 
             <section>
                 <strong>Form Results:</strong>
-                <div id="meaning-cloud"></div>
+                <div id="meaning-cloud-feedback"></div>
                 <div id="results"></div>
             </section>
         </main>
@@ -40,5 +47,6 @@
         <footer>
             <p>This is a footer</p>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </body>
 </html>

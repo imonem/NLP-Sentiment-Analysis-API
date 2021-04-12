@@ -1,4 +1,5 @@
 import { handleSubmit } from './js/formHandler';
+import { getMeaning } from './js/formHandler';
 import { checkForName } from './js/nameChecker';
 import babelPolyfill from 'babel-polyfill';
 import './styles/resets.scss';
@@ -11,5 +12,6 @@ import './styles/header.scss';
 
 export {
     handleSubmit,
-    checkForName
+    checkForName,
+    getMeaning
 };

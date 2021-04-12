@@ -1,17 +1,31 @@
+let clientRequests = {};
+
 const path = require('path');
 //Obfuscated password initialization
-const dotenv = require('dotenv').config({path: '.\\\\meaning.env'});
+const dotenv = require('dotenv').config({
+    path: '.\\\\meaning.env'
+});
 
 //express and cors initialization
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const { response } = require('express');
-const json = require('./mockAPI.js');
-const app = express();
+//Form-Data init
+const FormData = require('form-data');
 
-app.use(express.static('dist'));
+const jsonData = require('./mockAPI.js');
+const requestOptions = require('./mockAPI.js');
+const axios = require('axios');
+const { error } = require('console');
+
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: false
+}));
 app.use(cors());
+app.use(express.static('dist'));
 
 console.log(process.env.API_KEY);
 console.log(`Your API key is ${process.env.API_KEY}`);
@@ -29,5 +43,33 @@ app.listen(8081, function () {
 });
 
 app.get('/test', function (req, res) {
-    res.send('hi mom!!');
+    res.send(jsonData);
 });
+
+//meaning cloud route
+app.post('/meaning', (req, res) => {
+    let newEntry = req.body;
+    clientRequests.article = newEntry.input;
+    console.log(`The req.body is ${req} and newEntry.txt is ${newEntry.input}`);
+    console.log(clientRequests);
+
+    const analysisData = () => {axios("https://api.meaningcloud.com/sentiment-2.1", {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/JSON"
+        },
+        params: {
+            key: process.env.API_KEY,
+            txt: clientRequests.article,
+            lang: 'en'
+        },
+        redirect: 'follow'
+    })
+    .then(data => ({
+        status: data.status,
+        body: data
+    }))
+    .then(({ status, body }) => console.log(status, body))
+    .catch(error => console.log('error', error));};
+analysisData();
+    res.send("ok!!");});
