@@ -1,4 +1,3 @@
-
 function handleSubmit(event) {
   event.preventDefault();
 
@@ -23,7 +22,7 @@ const getMeaning = async (event) => {
   event.preventDefault();
 
   //  Testing dotenv API_KEY
-  document.getElementById('meaning-cloud-feedback').innerHTML = process.env.API_KEY;
+  // document.getElementById('meaning-cloud-feedback').innerHTML = process.env.API_KEY;
 
   //Get article from client
   let formText = document.getElementById('meaning-cloud').value;
@@ -38,15 +37,19 @@ const getMeaning = async (event) => {
       data: {
         input: formText
       }
-    });
-    try {
-      let newAnalysis = response;
-      console.log(newAnalysis);
-    } catch (error) {
-      console.error(error);
-    }
-}; //remove this end and uncomment the below to get functionality back (client side)
-
+    })
+    .then((data) => {
+      console.log(data);
+      document.getElementById('model').innerHTML = data.data.model;
+      document.getElementById('score_tag').innerHTML = data.data.score_tag;
+      document.getElementById('agreement').innerHTML = data.data.agreement;
+      document.getElementById('subjectivity').innerHTML = data.data.subjectivity;
+      document.getElementById('confidence').innerHTML = data.data.confidence;
+      document.getElementById('irony').innerHTML = data.data.irony;
+      return data;
+    })
+    .catch((error) => console.error(error));
+};
 
 
 

@@ -1,9 +1,10 @@
 let clientRequests = {};
+let projectData = {};
 
 const path = require('path');
 //Obfuscated password initialization
 const dotenv = require('dotenv').config({
-    path: '.\\\\meaning.env'
+    path: '.\\\\.env'
 });
 
 //express and cors initialization
@@ -69,7 +70,18 @@ app.post('/meaning', (req, res) => {
         status: data.status,
         body: data
     }))
-    .then(({ status, body }) => console.log(status, body))
-    .catch(error => console.log('error', error));};
+    .then(({ status, body }) => {
+        // console.log(status, body);
+        projectData.model = body.data.model;
+        projectData.score_tag = body.data.score_tag;
+        projectData.agreement = body.data.agreement;
+        projectData.subjectivity = body.data.subjectivity;
+        projectData.confidence = body.data.confidence;
+        projectData.irony = body.data.irony;
+        res.send(projectData);
+    })
+    .catch(error => console.log('error', error));
+    // .then(res.send(projectData));
+};
 analysisData();
-    res.send("ok!!");});
+});
