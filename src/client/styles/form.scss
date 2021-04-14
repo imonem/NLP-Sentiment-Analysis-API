@@ -17,17 +17,16 @@ form {
         line-height: 20px;
         margin: 15px 15px;
         transition: ease .3s;
-    }
 
-    & input:hover {
-        font-family: 'Poppins', sans-serif;
-        // padding: 5px 20px;
-        width: 100%;
-        line-height: 20px;
-        margin: 15px 15px;
-        background-color: $Graphic-Design-2-hex;
-        transition: ease .3s;
-        cursor: pointer;
+        &#btn-submit {
+            margin: 10px;
+            padding: 3px;
+        }
+        &#btn-submit:hover {
+            color: $Graphic-Design-1-hex;
+            cursor: pointer;
+            transition: ease 0.3s;
+        }
     }
 
     label {
