@@ -5,28 +5,28 @@
 form {
     font-family: 'Poppins', sans-serif;
     background-color: $Graphic-Design-3-hex;
-    // border: 1px solid $Graphic-Design-1-hex;
+    border: 1px solid $Graphic-Design-1-hex;
     border-radius: 3px;
     padding: 40px;
 
 
     input {
         font-family: 'Poppins', sans-serif;
-        padding: 5px 20px;
+        // padding: 5px 20px;
         width: 100%;
         line-height: 20px;
         margin: 15px 15px;
-        transition: ease-in-out .3s;
+        transition: ease .3s;
     }
 
     & input:hover {
         font-family: 'Poppins', sans-serif;
-        padding: 5px 20px;
+        // padding: 5px 20px;
         width: 100%;
         line-height: 20px;
         margin: 15px 15px;
         background-color: $Graphic-Design-2-hex;
-        transition: ease-in-out .3s;
+        transition: ease .3s;
         cursor: pointer;
     }
 
@@ -39,15 +39,17 @@ form {
 }
 
 div {
-background-color: $Graphic-Design-1-rgba;
+    background-color: $Graphic-Design-1-rgba;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding: 5px;
     margin: 5px;
 
-    #results-container {
+    &#results-container {
         background-color: $Graphic-Design-1-rgba;
+        height: 20vh;
+        width: 100%;
     }
 }
