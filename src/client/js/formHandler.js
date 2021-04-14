@@ -1,34 +1,16 @@
-function handleSubmit(event) {
-  event.preventDefault();
-
-  // check what text was put into the form field
-  let formText = document.getElementById('name').value;
-  Client.checkForName(formText);
-
-  console.log("::: Form Submitted :::");
-  fetch('http://localhost:8081/test')
-    .then(res => {
-      return res.json();
-    })
-    .then(data => {
-      console.log(data);
-      document.getElementById('results').innerHTML = data.message;
-    });
-}
+import { checkUrlIsValid } from "./checkUrlIsValid";
 
 //  Hero function to get data through Meaning Cloud API
 
 const getMeaning = async (event) => {
   event.preventDefault();
 
-  //  Testing dotenv API_KEY
-  // document.getElementById('meaning-cloud-feedback').innerHTML = process.env.API_KEY;
-
-  //Get article from client
+  //Get url from client
   let formText = document.getElementById('meaning-cloud').value;
   console.log(`Got this from user : ${formText}`);
 
-  //fetch request options from NODE
+  if (checkUrlIsValid(formText)) {
+      //fetch request options from NODE
   let response = await axios('http://localhost:8081/meaning', {
       method: 'POST',
       headers: {
@@ -40,20 +22,31 @@ const getMeaning = async (event) => {
     })
     .then((data) => {
       console.log(data);
-      document.getElementById('model').innerHTML = data.data.model;
-      document.getElementById('score_tag').innerHTML = data.data.score_tag;
-      document.getElementById('agreement').innerHTML = data.data.agreement;
-      document.getElementById('subjectivity').innerHTML = data.data.subjectivity;
-      document.getElementById('confidence').innerHTML = data.data.confidence;
-      document.getElementById('irony').innerHTML = data.data.irony;
+      document.getElementById('model').innerHTML = `<p>The model language is: "${data.data.model}"</p>`;
+      document.getElementById('score_tag').innerHTML = `<p>The 'Score Tag' is: ${data.data.score_tag}</p>`;
+      document.getElementById('agreement').innerHTML = `<p>This is a form of ${data.data.agreement}</p>`;
+      document.getElementById('subjectivity').innerHTML = `<p>This article is ${data.data.subjectivity}</p>`;
+      document.getElementById('confidence').innerHTML = `<p>Confidence: ${data.data.confidence}</p>`;
+      document.getElementById('irony').innerHTML = `<p>The article is ${data.data.irony}</p>`;
       return data;
     })
     .catch((error) => console.error(error));
+  } else {
+    document.getElementById('results').innerHTML = `<p>Not a valid a URL</p>`;
+    document.getElementById('model').innerHTML = ``;
+    document.getElementById('score_tag').innerHTML = ``;
+    document.getElementById('agreement').innerHTML = ``;
+    document.getElementById('subjectivity').innerHTML = ``;
+    document.getElementById('confidence').innerHTML = ``;
+    document.getElementById('irony').innerHTML = ``;
+  }
+
+
 };
 
 
 
 export {
-  handleSubmit,
+  // handleSubmit,
   getMeaning
 }; //never forget to re-export as this will break the Client library and will not give errors during build

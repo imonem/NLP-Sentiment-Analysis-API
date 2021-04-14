@@ -61,7 +61,7 @@ app.post('/meaning', (req, res) => {
         },
         params: {
             key: process.env.API_KEY,
-            txt: clientRequests.article,
+            url: clientRequests.article,
             lang: 'en'
         },
         redirect: 'follow'

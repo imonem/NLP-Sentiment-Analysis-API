@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Test</title>
+        <title>A Natural Language Processor Project</title>
         <!-- <link rel="stylesheet" href="/styles/resets.css">
         <link rel="stylesheet" href="/styles/base.css">
         <link rel="stylesheet" href="/styles/header.css">
@@ -13,7 +13,7 @@
     <body>
 
         <header>
-            <div class="">
+            <div class="logo">
                 Logo
             </div>
             <div class="">
@@ -22,23 +22,24 @@
         </header>
 
         <main>
-            <section>
+            <!-- <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <!-- onblur="Client.onBlur()"-->
-                    <input id="name" type="text" name="input" value="" placeholder="Name">
+
+                    <input id="name" type="text" name="input" onblur="onBlur()" value="" placeholder="Name">
                     <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
-            </section>
+            </section> -->
             <section>
                 <form class="" onsubmit="return Client.getMeaning(event)">
+                    <label for="getMeaning" id="txt-analysis">Paste your text here</label>
                     <!-- onblur="Client.onBlur()"-->
                     <input id="meaning-cloud" type="text" name="input" value="" placeholder="Article">
                     <input type="submit" name="" value="submit" onclick="return Client.getMeaning(event)" onsubmit="return Client.getMeaning(event)">
                 </form>
             </section>
 
-            <section>
-                <strong>Form Results:</strong>
+            <div id="results-container">
+                <h1>Results</h1>
                 <div id="results"></div>
                 <div id="model"></div>
                 <div id="score_tag"></div>
@@ -46,11 +47,13 @@
                 <div id="subjectivity"></div>
                 <div id="confidence"></div>
                 <div id="irony"></div>
-            </section>
+            </div>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p>&copy 2021-2025 Udacity</p>
+            <p></p>  <!--Todo add social links-->
+
         </footer>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </body>

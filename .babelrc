@@ -1,3 +1,4 @@
 {
-    'presets': ['@babel/preset-env']
+    'presets': ['@babel/preset-env'],
+    'plugins': ['@babel/plugin-transform-runtime'] //This line is due to an dev-server error (Uncaught ReferenceError: regeneratorRuntime is not defined) - solution is at (https://stackoverflow.com/questions/61755999/uncaught-referenceerror-regeneratorruntime-is-not-defined-in-react)
 }

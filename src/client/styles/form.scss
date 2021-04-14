@@ -1,12 +1,53 @@
+@import 'colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;800&display=swap');
+
+
 form {
-    border: 1px solid #545454;
+    font-family: 'Poppins', sans-serif;
+    background-color: $Graphic-Design-3-hex;
+    // border: 1px solid $Graphic-Design-1-hex;
     border-radius: 3px;
     padding: 40px;
+
+
+    input {
+        font-family: 'Poppins', sans-serif;
+        padding: 5px 20px;
+        width: 100%;
+        line-height: 20px;
+        margin: 15px 15px;
+        transition: ease-in-out .3s;
+    }
+
+    & input:hover {
+        font-family: 'Poppins', sans-serif;
+        padding: 5px 20px;
+        width: 100%;
+        line-height: 20px;
+        margin: 15px 15px;
+        background-color: $Graphic-Design-2-hex;
+        transition: ease-in-out .3s;
+        cursor: pointer;
+    }
+
+    label {
+        font-family: 'Poppins', sans-serif;
+        color: $Graphic-Design-5-hex;
+        font-weight: 800;
+        text-align: center;
+    }
 }
 
-input {
-    padding: 5px 20px;
-    width: 100%;
-    line-height: 16px;
-    margin: 10px 0;
+div {
+background-color: $Graphic-Design-1-rgba;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+
+    #results-container {
+        background-color: $Graphic-Design-1-rgba;
+    }
 }

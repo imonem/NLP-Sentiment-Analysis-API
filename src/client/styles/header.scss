@@ -1,5 +1,13 @@
+@import 'colors.scss';
+
 header {
+    background-color: $Graphic-Design-1-hex;
+    color: $Graphic-Design-5-hex;
     display: flex;
     justify-content: space-between;
     padding: 10px 40px;
+
+    .logo {
+        font-weight: 800;
+    }
 }

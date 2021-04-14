@@ -1,0 +1,9 @@
+@import 'colors.scss';
+
+footer {
+    background-color: $Graphic-Design-2-hex;
+    color: $Graphic-Design-5-hex;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
