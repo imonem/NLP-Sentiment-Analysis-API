@@ -22,6 +22,7 @@ const getMeaning = async (event) => {
     })
     .then((data) => {
       console.log(data);
+      document.getElementById('results').innerHTML = ``;
       document.getElementById('model').innerHTML = `<p>The model language is: "${data.data.model}"</p>`;
       document.getElementById('score_tag').innerHTML = `<p>The 'Score Tag' is: ${data.data.score_tag}</p>`;
       document.getElementById('agreement').innerHTML = `<p>This is a form of ${data.data.agreement}</p>`;
@@ -31,17 +32,7 @@ const getMeaning = async (event) => {
       return data;
     })
     .catch((error) => console.error(error));
-  } else {
-    document.getElementById('results').innerHTML = `<p>Not a valid a URL</p>`;
-    document.getElementById('model').innerHTML = ``;
-    document.getElementById('score_tag').innerHTML = ``;
-    document.getElementById('agreement').innerHTML = ``;
-    document.getElementById('subjectivity').innerHTML = ``;
-    document.getElementById('confidence').innerHTML = ``;
-    document.getElementById('irony').innerHTML = ``;
   }
-
-
 };
 
 
