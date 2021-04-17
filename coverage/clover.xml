@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1618532870899" clover="3.2.0">
+  <project timestamp="1618532870899" name="All files">
+    <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1" elements="7" coveredelements="7" complexity="0" loc="6" ncloc="6" packages="1" files="1" classes="1"/>
+    <file name="checkUrlIsValid.js" path="C:\Users\Admin\Desktop\advanced-frontend\Webpack\Projects\fend\projects\evaluate-news-nlp\src\client\js\checkUrlIsValid.js">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="3" count="2" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>

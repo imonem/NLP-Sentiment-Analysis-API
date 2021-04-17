@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
@@ -8,6 +9,7 @@ module.exports = {
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
+    // presets: [['@babel/preset-env', {targets: {node: 'current'}}]], //Configuring Jest to work with Babel
     output: {
         libraryTarget: 'var',
         library: 'Client'
@@ -29,6 +31,7 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html",
         }),
+
         new CleanWebpackPlugin({
             // Simulate the removal of files
             dry: false,
@@ -37,6 +40,7 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        })
+        }),
+        new WorkboxPlugin.GenerateSW(),
     ]
 };

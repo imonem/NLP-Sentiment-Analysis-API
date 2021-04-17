@@ -1,4 +1,4 @@
-import { getMeaning } from './js/formHandler';
+import { getMeaning } from './js/getMeaning';
 import babelPolyfill from 'babel-polyfill';
 import './styles/resets.scss';
 import './styles/base.scss';

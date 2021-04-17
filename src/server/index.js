@@ -1,8 +1,9 @@
+//server endpoints to save Meaning Cloud Data Response and Client requests
 let clientRequests = {};
 let projectData = {};
 
 const path = require('path');
-//Obfuscated password initialization
+//Obfuscated password initialization, rename to whatever is the .env file name
 const dotenv = require('dotenv').config({
     path: '.\\\\.env'
 });
@@ -12,11 +13,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-//Form-Data init
-const FormData = require('form-data');
-
-const jsonData = require('./mockAPI.js');
-const requestOptions = require('./mockAPI.js');
 const axios = require('axios');
 const { error } = require('console');
 
@@ -28,23 +24,17 @@ app.use(express.urlencoded({
 app.use(cors());
 app.use(express.static('dist'));
 
-console.log(process.env.API_KEY);
-console.log(`Your API key is ${process.env.API_KEY}`);
+console.log(`Your API key is ${process.env.API_KEY}`); //comment out this line before using code for production
 
 console.log(__dirname);
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html');
-    // res.sendFile(path.resolve('./src/client/views/index.html'));
 });
 
 // designates what port the app will listen to for incoming requests
 app.listen(8081, function () {
-    console.log('Example app listening on port 8081!');
-});
-
-app.get('/test', function (req, res) {
-    res.send(jsonData);
+    console.log('Meaning Cloud Server listening on port 8081!');
 });
 
 //meaning cloud route
